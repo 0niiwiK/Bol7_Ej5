@@ -1,20 +1,21 @@
 #include <stdio.h>
 
 int main() {
-    int estatura,max=0,numalumnos=0;
-    float promedio=0;
-    printf("Introduce el numero de alumnos de la clase: ");
-    scanf("%d",&numalumnos);
-    for (int i = numalumnos; i > 0 ; i--) {
-        printf("Introduce la estatura del alumno en cm: ");
-        scanf("%d",&estatura);
+    int num,max=0,haynegativo=0;
+    printf("Introduce un numero (0 para terminar): ");
+    scanf("%d",&num);
+    while (num!=0){
+        if (num>max)
+            max=num;
+        if (num<0)
+            haynegativo=1;
+        printf("Introduce un numero: ");
+        scanf("%d",&num);
         fflush(stdin);
-        if (estatura>max)
-            max=estatura;
-        promedio+=estatura;
     }
-    promedio/=(float)numalumnos;
-    printf("La estatura mas alta es de %d cm\n",max);
-    printf("El promedio de estaturas de la clase es de %.2f cm",promedio);
-    return 0;
+    printf("El mayor valor es: %d",max);
+    if (haynegativo)
+        printf("\nSe ha leido al menos un numero negativo.");
+    else
+        printf("\nNo se ha leido ningun numero negativo.");
 }
